@@ -1,18 +1,33 @@
 {
   "name": "vite-manifest-plugin",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This vite plugin will add publich path or url to the vite generated manifest",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "lint": "eslint --cache .",
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vite-plugin",
+    "vite plugin",
+    "module federation"
+  ],
+  "author": "thanat.wongamut",
   "license": "ISC",
   "dependencies": {
     "typescript": "^5.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThanatWongsamut/vite-manifest-plugin.git"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",
