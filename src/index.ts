@@ -2,17 +2,15 @@ import { Plugin } from "vite"
 import { ManifestOptions } from "./types"
 import { modifiedManifest } from "./utils"
 
-interface ExtendedPlugin extends Plugin {
-  modifiedManifest(options: ManifestOptions): Promise<void>
-}
-
-export const viteManifestPlugin = (options: ManifestOptions): ExtendedPlugin => {
-  const plugin: ExtendedPlugin = {
+export const viteManifestPlugin = async (options: ManifestOptions): Promise<Plugin<any>> => {
+  const plugin: Plugin = {
     name: 'vite-manifest-plugin',
-    modifiedManifest: modifiedManifest
+    enforce: 'post',
+    apply: 'build',
+    async writeBundle({ dir }) {
+      await modifiedManifest(dir, options)
+    },
   }
-
-  modifiedManifest(options)
 
   return plugin;
 }
