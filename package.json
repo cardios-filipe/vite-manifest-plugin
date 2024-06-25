@@ -1,9 +1,14 @@
 {
   "name": "vite-manifest-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This vite plugin will add publich path or url to the vite generated manifest",
+  "type": "module",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
