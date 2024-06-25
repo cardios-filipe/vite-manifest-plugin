@@ -15,6 +15,14 @@ export const modifiedManifest = async (outputPath: string | undefined, options: 
       }
     }
 
+    if (manifest['index.html']) {
+      var newCss = []
+      for (var idx in manifest['index.html'].css) {
+        newCss.push(`${options.publicPath ?? "/"}${manifest['index.html'].css[idx]}`)
+      }
+      manifest['index.html'].css = newCss
+    }
+
     writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   } catch (error) {
     console.error('An error occurred:', error);
